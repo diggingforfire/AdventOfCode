@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _03._01
 {
@@ -16,7 +13,6 @@ namespace _03._01
             int x = 0;
             int y = 0;
 
-
             var getX = new Func<char, int>((c) => { return x += c == '<' ? -1 : (c == '>' ? 1 : 0); });
             var getY = new Func<char, int>((c) => { return y += c == 'v' ? -1 : (c == '^' ? 1 : 0); });
 
@@ -25,7 +21,6 @@ namespace _03._01
 
             Console.WriteLine(result);
             Console.ReadKey();
-
         }
     }
 }
