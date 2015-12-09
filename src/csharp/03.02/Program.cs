@@ -11,27 +11,21 @@ namespace _03._02
         {
             string input = File.ReadAllText("input.txt");
 
-            var points = new[] {new Point(0, 0), new Point(0, 0)};
             int x = 0;
             int y = 0;
             int roboX = 0;
             int roboY = 0;
 
-           
             var getX = new Func<char, int, int>((c, i) =>
             {
                 int offset = c == '<' ? -1 : (c == '>' ? 1 : 0);
-                if (i%2 == 0)
-                    return x += offset;
-                return roboX += offset;
+                return i % 2 == 0 ? x += offset : roboX += offset; ;
             });
 
             var getY = new Func<char, int, int>((c, i) =>
             {
                 int offset = c == 'v' ? -1 : (c == '^' ? 1 : 0);
-                if (i % 2 == 0)
-                    return y += offset;
-                return roboY += offset;
+                return i % 2 == 0 ? y += offset : roboY += offset;
             });
 
             var houses = input.Select( (c, i) => new { X = getX(c, i), Y = getY(c, i) }).ToList();
