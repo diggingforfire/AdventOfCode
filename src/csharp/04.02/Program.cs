@@ -15,7 +15,8 @@ namespace _04._02
         {
             string key = File.ReadAllText("input.txt");
 
-            var semaphore = new Semaphore(Environment.ProcessorCount, Environment.ProcessorCount);
+            int maxThreads = Environment.ProcessorCount;
+            var semaphore = new SemaphoreSlim(maxThreads, maxThreads);
 
             bool found = false;
 
@@ -23,9 +24,17 @@ namespace _04._02
 
             int i = 0;
 
-            while (!found)
+            while (true)
             {
-                semaphore.WaitOne();
+                if (found)
+                {
+                    if (maxThreads == semaphore.CurrentCount)
+                        break;
+              
+                    continue;
+                }
+
+                semaphore.Wait();
         
                 ThreadPool.QueueUserWorkItem((state) =>
                 {
@@ -46,7 +55,6 @@ namespace _04._02
                         semaphore.Release();
                     }
                 });
- 
             }
 
             Console.WriteLine(results.Min());
