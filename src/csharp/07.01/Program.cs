@@ -30,17 +30,6 @@ namespace _07._01
 
             Console.WriteLine(signal);
             Console.ReadKey();
-
-            //foreach (var wire in wires)
-            //    wire.Value.ClearSignal();
-
-            //wires["b"].SetSignal(signal);
-
-            //expression = GetExpression(a.StringExpression);
-            //signal = (ushort)Expression.Lambda<Func<int>>(expression).Compile()();
-
-            //Console.WriteLine(signal);
-            //Console.ReadKey();
         }
 
       
