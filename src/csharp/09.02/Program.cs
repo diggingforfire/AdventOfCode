@@ -43,19 +43,15 @@ namespace _09._02
         {
             var permutations = new List<List<string>>();
 
-            if (cities.Count == 2)
-            {
-                return new List<List<string>>(new[] { cities, new List<string>(new[] { cities[1], cities[0] }) });
-            }
-
             foreach (var city in cities)
-            {
                 foreach (var perms in GetPermutations(cities.Except(new[] { city }).ToList()))
                 {
                     perms.Insert(0, city);
                     permutations.Add(perms);
                 }
-            }
+
+            if (!permutations.Any())
+                permutations.Add(new List<string>());
 
             return permutations;
         }
