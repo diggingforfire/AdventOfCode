@@ -12,7 +12,7 @@ namespace _09._02
             var lines = File.ReadAllLines("input.txt");
 
             var routes = lines.Select(l => new { From = l.Split(' ')[0], To = l.Split(' ')[2], Distance = Int32.Parse(l.Split(' ')[4]) }).ToList();
-            var cities = routes.Select(r => r.From).Concat(routes.Select(r => r.To)).GroupBy(c => c).Select(g => g.Key).ToList();
+            var cities = routes.Select(r => r.From).Concat(routes.Select(r => r.To)).Distinct().ToList();
 
             var getDistance = new Func<string, string, int>((c1, c2) =>
             {

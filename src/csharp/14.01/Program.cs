@@ -21,9 +21,9 @@ namespace _14._01
             {
                 double numPeriods = seconds / (double)r.FlyRestDuration;
                 int totalDistance = (int)Math.Floor(numPeriods)*r.DistancePerPeriod;
-                double rem = seconds%r.FlyRestDuration;
+                double remainder = seconds%r.FlyRestDuration;
 
-                if (rem > r.FlyDuration)
+                if (remainder > r.FlyDuration)
                     totalDistance += r.DistancePerPeriod;
 
                 if (totalDistance > maxDistance)

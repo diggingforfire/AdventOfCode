@@ -31,11 +31,11 @@ namespace _14._02
         {
             double numPeriods = second / (double)(flyDuration + restDuration);
             int distance = (int)Math.Floor(numPeriods) * distancePerPeriod;
-            int remS = second % (flyDuration + restDuration);
-            if (remS > flyDuration)
-                remS = flyDuration;
+            int remainder = second % (flyDuration + restDuration);
+            if (remainder > flyDuration)
+                remainder = flyDuration;
 
-            distance += (remS*speed);
+            distance += (remainder*speed);
 
             return distance;
         }
